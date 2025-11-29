@@ -1,8 +1,9 @@
 import type { Product } from './types';
 
-// TIER 3: DATA PERSISTENCE LAYER (Mock)
-// In a real app, this would be a JSON file or SQL database.
-// Context: Computational Linguistics resources (PhD research topic).
+/* TIER 3: DATA PERSISTENCE LAYER (Mock)
+In a real app, this would be a JSON file or SQL database.
+Context: Computational Linguistics resources (PhD research topic). 
+*/
 
 export const MOCK_DB_PRODUCTS: Product[] = [
   {

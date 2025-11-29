@@ -2,10 +2,17 @@ import React from 'react';
 import type { Product } from '../types';
 import { Tag, Settings, Warehouse } from 'lucide-react';
 
+/* 
+Product card structure 
+*/
+
+
+/* use this component only if you have a product */
 interface ProductCardProps {
   product: Product;
 }
 
+/* product card */
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="bg-white dark:bg-dark-card rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transition-all hover:shadow-xl">

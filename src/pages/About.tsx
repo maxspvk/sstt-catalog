@@ -1,5 +1,9 @@
 import React from 'react';
 
+/* 
+About page structure 
+*/
+
 const About: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto py-12 px-4">

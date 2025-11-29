@@ -5,45 +5,45 @@ import ProductCard from '../сomponents/ProductCard';
 import type { Product } from '../types';
 import { Search, AlertCircle } from 'lucide-react';
 
-/**
- * TIER 1: Presentation Layer
- * 
- * Interacts with Tier 2 (ProductService, LoggerService).
- * Does not know how data is stored or how search is implemented.
- */
+/*
+TIER 1: Presentation Layer
+Interacts with Tier 2 (ProductService, LoggerService).
+Does not know how data is stored or how search is implemented.
+*/
 const Catalog: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<Product[]>([]);
-  const [hasSearched, setHasSearched] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  /* memory */
+  const [searchQuery, setSearchQuery] = useState(''); // what we are currently typing in the input field
+  const [searchResults, setSearchResults] = useState<Product[]>([]); // array of found results
+  const [hasSearched, setHasSearched] = useState(false); // did the user click the search button
+  const [error, setError] = useState<string | null>(null); // error text if product not found
 
+  /* handle */
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // does not reload the page
     
-    if (!searchQuery.trim()) return;
+    if (!searchQuery.trim()) return; // checking for emptiness (for example, if spaces are entered)
 
-    // Call Tier 2: Product Logic
-    const product = productService.findBySku(searchQuery);
+    const product = productService.findBySku(searchQuery); // give the search service text, and it returns us an array of found products
     
-    // Update UI State
+    /* update UI State */
     setSearchResults(product);
     setHasSearched(true);
 
+    /* if the product is not found - record an error */
     if (product.length === 0) {
       setError(`No products found for "${searchQuery}". Check the name or SKU is correct.`);
     } else {
       setError(null);
     }
-
-    // Call Tier 2/3: Logging Logic
-    // Requirement: Log date and query
-    loggerService.logSearch(searchQuery, !!product);
+    
+    /* transfer the search results to the logger */
+    loggerService.logSearch(searchQuery, product.length > 0);
   };
 
   return (
     <div className="max-w-3xl mx-auto w-full py-12 px-4">
       
-      {/* Hero Section */}
+      {/* hero Section */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
           Cross-Reference Finder
@@ -53,7 +53,7 @@ const Catalog: React.FC = () => {
         </p>
       </div>
 
-      {/* Search Bar (Requirement: Middle of page) */}
+      {/* search Bar (Requirement: Middle of page) */}
       <form onSubmit={handleSearch} className="relative mb-12">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -75,7 +75,7 @@ const Catalog: React.FC = () => {
         </div>
       </form>
 
-      {/* Results Section */}
+      {/* results Section */}
       <div className="space-y-6 min-h-[300px]">
         {error && (
           <div className="rounded-md bg-red-50 dark:bg-red-900/20 p-4 border border-red-200 dark:border-red-800">
@@ -95,7 +95,7 @@ const Catalog: React.FC = () => {
           </div>
         )}
 
-        {/* Малюємо список карток, а не одну */}
+        {/* draw a list of cards */}
         {searchResults.length > 0 && (
           <div className="grid grid-cols-1 gap-6 animate-fade-in">
             {searchResults.map((product) => (
@@ -104,7 +104,7 @@ const Catalog: React.FC = () => {
           </div>
         )}
 
-        {/* Перевіряємо довжину масиву */}
+        {/* checking the length of the array */}
         {!hasSearched && searchResults.length === 0 && (
           <div className="text-center text-gray-400 dark:text-gray-600 mt-20">
              Find compatible parts by SKU or Number.
