@@ -7,6 +7,7 @@ export interface Product {
   engines: string;
   manufacturer: string;
   imageUrl: string;
+  priceUSD: number;
 }
 
 // Domain Entity: LogEntry

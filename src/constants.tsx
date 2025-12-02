@@ -12,7 +12,8 @@ export const MOCK_DB_PRODUCTS: Product[] = [
     cross: "Nissens - 93037; Jrone - 8G15-300-310; SL Turbo - 200301090130; EE turbo - Turbo-G053.",
     engines: "D4164T",
     manufacturer: "Garrett",
-    imageUrl: "/753420-0005.jfif"
+    imageUrl: "/753420-0005.jfif",
+    priceUSD: 380
   },
   {
     sku: "54359880000",
@@ -20,7 +21,8 @@ export const MOCK_DB_PRODUCTS: Product[] = [
     cross: "Nissens - 93073; Jrone - 8B35-200-028; SL Turbo - 200102090104; EE turbo - Turbo-K006S.",
     engines: "K9K",
     manufacturer: "KKK",
-    imageUrl: "/54359880000.jpg"
+    imageUrl: "/54359880000.jpg",
+    priceUSD: 245
   },
   {
     sku: "765155-0008",
@@ -28,7 +30,8 @@ export const MOCK_DB_PRODUCTS: Product[] = [
     cross: "Nissens - 93115; Jrone - 8G20-300-788; SL Turbo - 200401121270; EE turbo - Turbo-G143S.",
     engines: "OM642",
     manufacturer: "Garrett",
-    imageUrl: "/765155-0008.jpg"
+    imageUrl: "/765155-0008.jpg",
+    priceUSD: 990
   },
   {
     sku: "1102-015-928",
@@ -36,7 +39,8 @@ export const MOCK_DB_PRODUCTS: Product[] = [
     cross: "Jrone - 1000-010-108; SL Turbo - 300001090165; EE turbo - GT15-028.",
     engines: "D4164T",
     manufacturer: "Melett",
-    imageUrl: "/1102-015-928.jpg"
+    imageUrl: "/1102-015-928.jpg",
+    priceUSD: 115
   },
   {
     sku: "1850-132-031",
@@ -44,6 +48,7 @@ export const MOCK_DB_PRODUCTS: Product[] = [
     cross: "Jrone - 2063-050-788; SL Turbo - 301201120083; EE turbo - AC-G260eh.",
     engines: "OM642",
     manufacturer: "Hella",
-    imageUrl: "/1850-132-031.jpg"
+    imageUrl: "/1850-132-031.jpg",
+    priceUSD: 280
   }
 ];

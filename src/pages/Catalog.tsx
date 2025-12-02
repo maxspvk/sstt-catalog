@@ -4,6 +4,8 @@ import { loggerService } from '../services/LoggerService';
 import ProductCard from '../сomponents/ProductCard';
 import type { Product } from '../types';
 import { Search, AlertCircle } from 'lucide-react';
+import { currencyService } from '../services/CurrencyService';
+import { useEffect } from 'react'; // Не забудьте додати useEffect в імпорт з 'react'
 
 /*
 TIER 1: Presentation Layer
@@ -16,6 +18,16 @@ const Catalog: React.FC = () => {
   const [searchResults, setSearchResults] = useState<Product[]>([]); // array of found results
   const [hasSearched, setHasSearched] = useState(false); // did the user click the search button
   const [error, setError] = useState<string | null>(null); // error text if product not found
+  const [exchangeRate, setExchangeRate] = useState<number>(0);
+
+  // Fetch Exchange Rate on startup (External API)
+  useEffect(() => {
+    const fetchRate = async () => {
+      const rate = await currencyService.getUsdRate();
+      setExchangeRate(rate);
+    };
+    fetchRate();
+  }, []);
 
   /* handle */
   const handleSearch = (e: React.FormEvent) => {
@@ -99,7 +111,10 @@ const Catalog: React.FC = () => {
         {searchResults.length > 0 && (
           <div className="grid grid-cols-1 gap-6 animate-fade-in">
             {searchResults.map((product) => (
-              <ProductCard key={product.sku} product={product} />
+              <ProductCard 
+              key={product.sku} 
+              product={product}
+              rate={exchangeRate} />
             ))}
           </div>
         )}
