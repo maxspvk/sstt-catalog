@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, rate = 0 }) => {
               {product.name}
             </h2>
             <div className="flex flex-col items-end">
-              {/* Ціна в USD */}
+              {/* Price USD */}
               <div className="text-xl font-bold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-lg">
                 ${product.priceUSD}
               </div>
@@ -47,12 +47,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, rate = 0 }) => {
             </div>
           </div>
           
-          {/* 1. Заголовок (окремий div) */}
+          
           <div className="mt-3 text-xs font-bold text-gray-400 uppercase tracking-wider">
             Cross-References:
           </div>
           
-          {/* 2. Текст (окремий p) */}
           <p className="mt-1 text-gray-500 dark:text-gray-300">
             {product.cross}
           </p>
