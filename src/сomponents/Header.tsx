@@ -52,7 +52,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* MOBILE Menu Dropdown (Випадаюче меню) */}
+      {/* MOBILE Menu Dropdown */}
       {isMenuOpen && (
         <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card animate-fade-in">
           <div className="px-4 pt-2 pb-4 space-y-2">

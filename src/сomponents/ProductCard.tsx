@@ -7,7 +7,7 @@ Product card structure
 */
 
 
-/* use this component only if you have a product */
+/* use this component only if we have a product */
 interface ProductCardProps {
   product: Product;
   rate?: number;

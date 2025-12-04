@@ -6,10 +6,10 @@ import type { ThemeContextType } from '../types'; // ThemeContextType імпор
  * Uses localStorage for persistence (SSTT requirement).
  */
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined); // Context Definition: Creates a global state container for theme data.
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Initialize based on localStorage or system preference
+  /* Initialize based on localStorage or system preference */
   const [isDark, setIsDark] = useState<boolean>(() => {
     const saved = localStorage.getItem('theme');
     if (saved) {
@@ -17,7 +17,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
-
+/* Updates the HTML DOM classes and persists the choice to LocalStorage. */
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDark) {
@@ -31,13 +31,14 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const toggleTheme = () => setIsDark(prev => !prev);
 
+  /* Wraps the application and passes the state down */
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
-
+/* Safely exposes the theme context to components. */
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (!context) throw new Error('useTheme must be used within a ThemeProvider');
